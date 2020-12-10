@@ -4,6 +4,7 @@ const { DateTime } = require('luxon');
 const { htmlToText: htmlToTextWithOptions } = require('html-to-text');
 const { parseStringPromise: parseXml, Builder: XMLBuilder } = require('xml2js');
 
+const CALENDAR_NAME = 'Academic Calendar';
 const CALENDAR_URL =
   'https://registrar.gatech.edu/academiccalendar/current/data.xml';
 const CALENDAR_TIMEZONE = 'America/New_York';
@@ -14,6 +15,7 @@ exports.handler = async function (event, context) {
   const [hostname] = event.headers.host.split(':', 1);
   const calendar = ical({
     domain: hostname,
+    name: CALENDAR_NAME,
     timezone: CALENDAR_TIMEZONE,
     prodId: {
       company: 'Rishov Sarkar',
@@ -49,6 +51,7 @@ exports.handler = async function (event, context) {
       generateLinks(path, associatedLink);
     const url = new URL(path, CALENDAR_URL).toString();
     const lastModified = DateTime.fromSeconds(parseInt(updated, 10)).toJSDate();
+    const transparency = 'TRANSPARENT';
 
     if (!allDay || endDate.diff(startDate, 'days').days < 3) {
       const start = startDate.toJSDate();
@@ -66,6 +69,7 @@ exports.handler = async function (event, context) {
         allDay,
         url,
         lastModified,
+        transparency,
       });
     } else {
       const startDateFirstDay = startDate;
@@ -109,6 +113,7 @@ exports.handler = async function (event, context) {
         allDay,
         url,
         lastModified,
+        transparency,
       });
       calendar.createEvent({
         id: idLastDay,
@@ -120,6 +125,7 @@ exports.handler = async function (event, context) {
         allDay,
         url,
         lastModified,
+        transparency,
       });
     }
   });
