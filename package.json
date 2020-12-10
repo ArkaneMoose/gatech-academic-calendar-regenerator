@@ -13,6 +13,10 @@
     "xml2js": "^0.4.23"
   },
   "devDependencies": {
-    "@types/node": "^12.19.8"
+    "@types/node": "^12.19.8",
+    "netlify-cli": "^2.69.6"
+  },
+  "scripts": {
+    "dev": "netlify dev"
   }
 }

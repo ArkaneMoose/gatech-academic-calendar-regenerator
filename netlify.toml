@@ -1,9 +1,13 @@
 [build]
+publish = "public/"
 functions = "functions/"
+
+[dev]
+framework = "#static"
 
 [[redirects]]
 from = "/"
-to = "webcal://gatech-academic-calendar-regenerator.netlify.app/calendar.ics"
+to = "https://github.com/ArkaneMoose/gatech-academic-calendar-regenerator"
 
 [[redirects]]
 from = "/calendar.ics"
