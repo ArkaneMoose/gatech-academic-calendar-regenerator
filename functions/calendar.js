@@ -8,6 +8,7 @@ const CALENDAR_NAME = 'Academic Calendar';
 const CALENDAR_URL =
   'https://registrar.gatech.edu/academiccalendar/current/data.xml';
 const CALENDAR_TIMEZONE = 'America/New_York';
+const MAX_EVENT_DAYS = 3;
 
 exports.handler = async function (event, context) {
   const response = await axios.get(CALENDAR_URL, { responseType: 'text' });
@@ -53,7 +54,7 @@ exports.handler = async function (event, context) {
     const lastModified = DateTime.fromSeconds(parseInt(updated, 10)).toJSDate();
     const transparency = 'TRANSPARENT';
 
-    if (!allDay || endDate.diff(startDate, 'days').days < 3) {
+    if (!allDay || endDate.diff(startDate, 'days').days <= MAX_EVENT_DAYS) {
       const start = startDate.toJSDate();
       const end = endDate.toJSDate();
       const htmlDescription = baseHtmlDescription;
