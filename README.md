@@ -1,7 +1,13 @@
 # GT Academic Calendar Regenerator
 
-[Add to your calendar](webcal://gatech-academic-calendar-regenerator.netlify.app/calendar.ics)  
-[Download .ics file](https://gatech-academic-calendar-regenerator.netlify.app/calendar.ics)
+[Add to Google Calendar](https://calendar.google.com/calendar/r?cid=es7amkphtm3notec11vi5ae5k7p81mpb%40import.calendar.google.com)  
+[Download a snapshot of the current calendar in .ics format](https://gatech-academic-calendar-regenerator.netlify.app/calendar.ics)
+
+To subscribe to this calendar in another calendar client, find an option to add a calendar by URL, and try one of these URLs:
+```
+https://gatech-academic-calendar-regenerator.netlify.app/calendar.ics
+webcal://gatech-academic-calendar-regenerator.netlify.app/calendar.ics
+```
 
 ## Why?
 
