@@ -1,5 +1,7 @@
 # GT Academic Calendar Regenerator
 
+A webcal feed for [Georgia Tech&rsquo;s academic calendar](https://registrar.gatech.edu/calendar).
+
 [Add to Google Calendar](https://calendar.google.com/calendar/r?cid=es7amkphtm3notec11vi5ae5k7p81mpb%40import.calendar.google.com)  
 [Download a snapshot of the current calendar in .ics format](https://gatech-academic-calendar-regenerator.netlify.app/calendar.ics)
 
