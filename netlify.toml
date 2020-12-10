@@ -1,0 +1,11 @@
+[build]
+functions = "functions/"
+
+[[redirects]]
+from = "/"
+to = "webcal://gatech-academic-calendar-regenerator.netlify.app/calendar.ics"
+
+[[redirects]]
+from = "/calendar.ics"
+to = "/.netlify/functions/calendar"
+status = 200
