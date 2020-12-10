@@ -13,7 +13,7 @@ webcal://gatech-academic-calendar-regenerator.netlify.app/calendar.ics
 
 A couple reasons:
 
-- First, Georgia Tech seemed to stop updating [their own webcal feed](webcal://communication.registrar.gatech.edu/feeds/ical/current/gt-academic-calendar-subscription.ics) back in July, so it&rsquo;s missing up-to-date information on the modified Spring 2021 calendar.
+- First, Georgia Tech seemed to stop updating [their own webcal feed](https://communication.registrar.gatech.edu/feeds/ical/current/gt-academic-calendar-subscription.ics) back in July, so it&rsquo;s missing up-to-date information on the modified Spring 2021 calendar.
 - Second, I was sick of seeing 47-day-long events like &ldquo;Online Application for Graduation&rdquo; taking up space on my Google Calendar every day.
 
 ## How?
