@@ -54,7 +54,7 @@ exports.handler = async function (event, context) {
     const lastModified = DateTime.fromSeconds(parseInt(updated, 10)).toJSDate();
     const transparency = 'TRANSPARENT';
 
-    if (!allDay || endDate.diff(startDate, 'days').days <= MAX_EVENT_DAYS) {
+    if (endDate.diff(startDate, 'days').days <= MAX_EVENT_DAYS) {
       const start = startDate.toJSDate();
       const end = endDate.toJSDate();
       const htmlDescription = baseHtmlDescription;
@@ -67,6 +67,60 @@ exports.handler = async function (event, context) {
         summary,
         description,
         htmlDescription,
+        allDay,
+        url,
+        lastModified,
+        transparency,
+      });
+    } else if (!allDay) {
+      const strStart = `${startDate.toLocaleString(
+        DateTime.DATE_HUGE
+      )} at ${startDate.toLocaleString(DateTime.TIME_SIMPLE)}`;
+      const strEnd = `${endDate.toLocaleString(
+        DateTime.DATE_HUGE
+      )} at ${endDate.toLocaleString(DateTime.TIME_SIMPLE)}`;
+
+      const idStart = `${id}.start`;
+      const start = startDate.toJSDate();
+      const summaryStart = `Start of ${summary}`;
+      const htmlDescriptionStart =
+        new XMLBuilder({ headless: true }).buildObject({
+          p: `This event ends on ${strEnd}.`,
+        }) + baseHtmlDescription;
+      const descriptionStart = htmlToText(htmlDescriptionStart, {
+        wordwrap: false,
+      });
+
+      const idEnd = `${id}.end`;
+      const end = endDate.toJSDate();
+      const summaryEnd = `End of ${summary}`;
+      const htmlDescriptionEnd =
+        new XMLBuilder({ headless: true }).buildObject({
+          p: `This event starts on ${strStart}.`,
+        }) + baseHtmlDescription;
+      const descriptionEnd = htmlToText(htmlDescriptionEnd, {
+        wordwrap: false,
+      });
+
+      calendar.createEvent({
+        id: idStart,
+        start,
+        end: start,
+        summary: summaryStart,
+        description: descriptionStart,
+        htmlDescription: htmlDescriptionStart,
+        allDay,
+        url,
+        lastModified,
+        transparency,
+      });
+      calendar.createEvent({
+        id: idEnd,
+        start: end,
+        end,
+        summary: summaryEnd,
+        description: descriptionEnd,
+        htmlDescription: htmlDescriptionEnd,
         allDay,
         url,
         lastModified,
